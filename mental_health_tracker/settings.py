@@ -55,7 +55,7 @@ ROOT_URLCONF = 'mental_health_tracker.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'], # Tambahkan konten baris ini
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,3 +124,9 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "rafansya-daryltama-mentalhealthtracker.pbp.cs.ui.ac.id"]
+
+CSRF_TRUSTED_ORIGINS = ["http://localhost",
+                        "http://127.0.0.1",
+                        "http://rafansya-daryltama-mentalhealthtracker.pbp.cs.ui.ac.id", 
+                        "https://rafansya-daryltama-mentalhealthtracker.pbp.cs.ui.ac.id"
+                        ]
