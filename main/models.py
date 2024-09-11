@@ -11,5 +11,5 @@ class MoodEntry(models.Model):
     def is_mood_strong(self):
         return self.mood_intensity > 5
     
-    # def __str__(self):
-    #     return f"{self.mood} - {self.time}"
+    def __str__(self):
+        return f"{self.mood} - {self.time}"
