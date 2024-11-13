@@ -5,7 +5,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from main.forms import MoodEntryForm
 from main.models import MoodEntry
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core import serializers
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
@@ -119,7 +119,7 @@ def logout_user(request):
 def add_mood_entry_ajax(request):
     form = MoodEntryForm(request.POST or None)
     
-    if not form.is_valid():
+    if not form.is_valid() and request.method != "POST":
         return HttpResponse(b"BAD REQUEST", status=400)
     
     mood = strip_tags(request.POST.get("mood")) # strip HTML tags!
